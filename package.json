@@ -1,0 +1,24 @@
+{
+  "name": "btcz-msg-auth",
+  "version": "1.0.0",
+  "description": "only a test for msg sign auth",
+  "main": "login.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcelusCH/btcz-msg-auth.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MarcelusCH/btcz-msg-auth/issues"
+  },
+  "homepage": "https://github.com/MarcelusCH/btcz-msg-auth#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2"
+  }
+}
