@@ -3,6 +3,7 @@ var express = require('express');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var path = require('path');
+var fs = require('fs');
 let https = require('https')
 
 
@@ -134,5 +135,23 @@ app.get('/logout', function(request, response) {
 });
 
 
+// Self-signed SSL certs for proxy through CF
+// created with 'openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout sign.btcz.rocks.key -out sign.btcz.rocks.crt'
+
+var key = fs.readFileSync('sign.btcz.rocks.key');
+var cert = fs.readFileSync('sign.btcz.rocks.crt');
+var listen_http = 3002;
+var listen_https = 3003;
+
+var options = {
+  key: key,
+  cert: cert
+};
+
 // Start app
-app.listen(3000);
+app.listen(listen_http);
+console.log('Listening on NON-SSL ' + listen_http);
+
+https.createServer(options, app).listen(listen_https);
+console.log('Listening on SSL ' + listen_https);
+
